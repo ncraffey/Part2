@@ -1,9 +1,11 @@
 #include <assert>
 #include "string.h"
+#include "array.h"
+
 void objectEqualsTest(){
-    Object a = new String("hello");
-    Object b = new String("hello");
-    Object c = new String("no hello");
+    Object* a = new String("hello");
+    Object* b = new String("hello");
+    Object* c = new String("no hello");
     assert(a.equals(a));
     assert(a.equals(b));
     assert(b.equals(a));
@@ -11,22 +13,22 @@ void objectEqualsTest(){
 };
 
 void objectHashTest(){
-    Object a = new String("hello");
-    Object b = new String("hello");
-    Object c = new String("no hello");
-    assert(a.hash() == b.hash());
+    Object* a = new String("hello");
+    Object* b = new String("hello");
+    Object* c = new String("no hello");
+    assert(a.hash() == a.hash());
     assert(a.hash() != b.hash());
 
 };
 
 void arraySetGetTest(){
-    Object a = new String("hello");
-    Object b = new String("hi");
+    Object* a = new String("hello");
+    Object* b = new String("hi");
     Array d = new Array(3, sizeof(String));
     assert(d.set(b, 0) == nullptr);
-    assert(d.get(0).equals(b));
-    assert(d.set(a, 0).equals(b));
-    assert(d.get(0).equals(a));
+    assert(d.get(0) == b);
+    assert(d.set(a, 0) ==(b));
+    assert(d.get(0) == (a));
 };
 void arrayLengthTest(){
     Array d = new Array(3, sizeof(String));
@@ -34,31 +36,31 @@ void arrayLengthTest(){
 };
 
 void arrayRemoveTest(){
-  Object a = new String("hello");
-  Object b = new String("hi");
+  Object* a = new String("hello");
+  Object* b = new String("hi");
   Array d = new Array(3, sizeof(String));
   d.set(b,0);
-  assert(d.remove(0).equals(b));
+  assert(d.remove(0) == b);
   assert(d.get(0) == nullptr);
 };
 
 
 void clearAndEmptyTest(){
-  Object a = new String("hello");
-  Object b = new String("hi");
+  Object* a = new String("hello");
+  Object* b = new String("hi");
   Array d = new Array(3, sizeof(String));
   d.set(b, 0);
   d.set(a, 1);
   d.clear();
   assert(d.get(0) == nullptr);
   assert(d.get(1) == nullptr);
-  assert(d.emptty())
+  assert(d.empty())
 };
 
 void arrayEqualsAndHashTest(){
-    Object a = new String("hello");
-    Object b = new String("hi");
-    Object c = new String("hi");
+    Object* a = new String("hello");
+    Object* b = new String("hi");
+    Object* c = new String("hi");
     Array d = new Array(3, sizeof(String));
     Array e = new Array(3, sizeof(String));
     Array f = new Array(3, sizeof(String));
