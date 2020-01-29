@@ -1,4 +1,4 @@
-#include <assert>
+#include <assert.h>
 #include "string.h"
 #include "array.h"
 
@@ -32,8 +32,8 @@ void arraySetGetTest(){
     assert(d->get(0) == (a));
 };
 void arrayLengthTest(){
-    Array d = new Array(3, sizeof(String));
-    assert(d.length() == 3);
+    Array* d = new Array(3, sizeof(String));
+    assert(d->length() == 3);
 };
 
 void arrayRemoveTest(){
@@ -71,7 +71,7 @@ void arrayEqualsAndHashTest(){
     e->set(c, 1);
     assert(d->equals(e));
     assert(e->equals(d));
-    assert(!d.equals(f));
+    assert(!d->equals(f));
     assert(d->hash() == e->hash());
     assert(d->hash() != f->hash());
 };
