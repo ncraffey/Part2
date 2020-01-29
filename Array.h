@@ -9,7 +9,7 @@ public:
   virtual void pushBack(void* o); //add o to end of array
   bool empty(); //checks if there are any items in the array
   size_t hash(); //returns the hash of the array
-  bool equals(void* o); //checks if this is equal to o
+  bool equals(Object* o); //checks if this is equal to o
   void clear(); // replaces all objects with nullpttr
   size_t length(); //returns the length of the array
 };
