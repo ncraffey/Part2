@@ -26,9 +26,9 @@ void arraySetGetTest(){
     Object* a = new String("hello");
     Object* b = new String("hi");
     Array *d = new Array(3, sizeof(String));
-    assert(d->set(b, 0) == nullptr);
+    assert(d->set(0, b) == nullptr);
     assert(d->get(0) == b);
-    assert(d->set(a, 0) ==(b));
+    assert(d->set(0, a) ==(b));
     assert(d->get(0) == (a));
 };
 void arrayLengthTest(){
@@ -40,7 +40,7 @@ void arrayRemoveTest(){
   Object* a = new String("hello");
   Object* b = new String("hi");
   Array *d = new Array(3, sizeof(String));
-  d->set(b,0);
+  d->set(0, b);
   assert(d->remove(0) == b);
   assert(d->get(0) == nullptr);
 };
@@ -50,8 +50,8 @@ void clearAndEmptyTest(){
   Object* a = new String("hello");
   Object* b = new String("hi");
   Array *d = new Array(3, sizeof(String));
-  d->set(b, 0);
-  d->set(a, 1);
+  d->set(0, b);
+  d->set(1, a);
   d->clear();
   assert(d->get(0) == nullptr);
   assert(d->get(1) == nullptr);
@@ -65,10 +65,10 @@ void arrayEqualsAndHashTest(){
     Array *d = new Array(3, sizeof(String));
     Array *e = new Array(3, sizeof(String));
     Array *f = new Array(3, sizeof(String));
-    d->set(b, 0);
-    d->set(a, 1);
-    e->set(b, 0);
-    e->set(c, 1);
+    d->set(0, b);
+    d->set(1, a);
+    e->set(0, b);
+    e->set(1, c);
     assert(d->equals(e));
     assert(e->equals(d));
     assert(!d->equals(f));
