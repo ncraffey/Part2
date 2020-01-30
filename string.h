@@ -7,7 +7,8 @@ class String: public Object {
 
         ~String();
 
-        virtual bool equals(Object* o);
+        bool equals(Object* o);
 
-        vitural size_t has(Object* o)
+        size_t hash(Object* o)
+
 };
