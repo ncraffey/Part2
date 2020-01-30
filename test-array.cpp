@@ -25,14 +25,14 @@ void objectHashTest(){
 void arraySetGetTest(){
     Object* a = new String("hello");
     Object* b = new String("hi");
-    Array *d = new strArray(sizeof(String));
+    Array *d = new objArray(sizeof(String));
     assert(d->set(0, b) == nullptr);
     assert(d->get(0) == b);
     assert(d->set(0, a) ==(b));
     assert(d->get(0) == (a));
 };
 void arrayLengthTest(){
-    Array* d = new strArray(sizeof(String));
+    Array* d = new objArray(sizeof(String));
     assert(d->length() == 0);
     Object* b = new String("hi");
     assert(d->set(0, b) == nullptr);
@@ -42,7 +42,7 @@ void arrayLengthTest(){
 void arrayRemoveTest(){
   Object* a = new String("hello");
   Object* b = new String("hi");
-  Array *d = new strArray(sizeof(String));
+  Array *d = new objArray(sizeof(String));
   d->set(0, b);
   assert(d->remove(0) == b);
   assert(d->get(0) == nullptr);
@@ -52,7 +52,7 @@ void arrayRemoveTest(){
 void clearAndEmptyTest(){
   Object* a = new String("hello");
   Object* b = new String("hi");
-  Array *d = new strArray(sizeof(String));
+  Array *d = new objArray(sizeof(String));
   d->set(0, b);
   d->set(1, a);
   d->clear();
@@ -65,9 +65,9 @@ void arrayEqualsAndHashTest(){
     Object* a = new String("hello");
     Object* b = new String("hi");
     Object* c = new String("hi");
-    Array *d = new strArray(sizeof(String));
-    Array *e = new strArray(sizeof(String));
-    Array *f = new strArray(sizeof(String));
+    Array *d = new objArray(sizeof(String));
+    Array *e = new objArray(sizeof(String));
+    Array *f = new objArray(sizeof(String));
     d->set(0, b);
     d->set(1, a);
     e->set(0, b);
