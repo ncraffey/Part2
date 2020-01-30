@@ -1,4 +1,5 @@
-#include "object.h"
+#pragma once
+#include "Object.h"
 class String: public Object {
     public:
         String();
@@ -9,6 +10,6 @@ class String: public Object {
 
         bool equals(Object* o);
 
-        size_t hash(Object* o)
+        size_t hash(Object* o);
 
 };

@@ -1,7 +1,9 @@
-#include "Object.h"
+#pragma once
+#include "string.h"
 typedef union Element{
   int i;
   float f;
   bool b;
-  Object o;
+  String* s;
+  Object* o;
 } element;
