@@ -83,7 +83,7 @@ void arrayEqualsAndHashTest(){
     d->set(0, b);
     d->set(1, a);
     e->set(0, b);
-    e->set(1, c);
+    e->set(1, a);
     assert(d->equals(e));
     assert(e->equals(d));
     assert(!d->equals(f));

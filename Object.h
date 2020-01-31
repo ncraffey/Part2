@@ -16,9 +16,7 @@ public:
   /* Default Object destructor, to be overriden by subclasses */
   virtual ~Object();
 
-
   /** VIRTUAL METHODS **/
-
   /* Returns whether two objects are equal, to be overriden by subclasses */
   virtual bool equals(Object* const obj);
 
