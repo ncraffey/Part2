@@ -1,6 +1,7 @@
 #include <assert.h>
 #include "Array.h"
 #include <cstddef>
+#include "string.h"
 static std::nullptr_t np;
 void objectEqualsTest(){
     Object* a = new String("hello");
@@ -10,12 +11,23 @@ void objectEqualsTest(){
     assert(a->equals(b));
     assert(b->equals(a));
     assert(!a->equals(c));
+    Object* d = new Int(10);
+    Object* e = new Int(10);
+    assert(!a->equals(d));
+    assert(d->equals(e));
+    Object* f = new Bool(true);
+    Object* h = new Bool(false);
+    assert(!f->equals(h));
+    assert(f->equals(f));
 };
 
 void objectHashTest(){
     Object* a = new String("hello");
     Object* b = new String("hello");
     Object* c = new String("no hello");
+    Object* d = new Float(3.1);
+    Object* e = new Float(2.9);
+    assert(d->hash() != e->hash());
     assert(a->hash() == a->hash());
     assert(a->hash() == b->hash());
     assert(a->hash() != c->hash());
@@ -23,10 +35,8 @@ void objectHashTest(){
 };
 
 void arraySetGetTest(){
-    Element* a;
-    Element* b;
-    a->s = new String("hello");
-    b->s = new String("hi");
+    Object* a = new String("hello");
+    Object* b = new String("hi");
     Array *d = new Array();
     assert(d->set(0, b) == np);
     assert(d->get(0) == b);
@@ -36,17 +46,14 @@ void arraySetGetTest(){
 void arrayLengthTest(){
     Array* d = new Array();
     assert(d->length() == 0);
-    Element* b;
-    b->s = new String("hi");
+    Object* b = new String("hi");
     assert(d->set(0, b) == np);
     assert(d->length() == 1);
 };
 
 void arrayRemoveTest(){
-  Element* a;
-  Element* b;
-  a->s = new String("hello");
-  b->s = new String("hi");
+  Object* a = new String("hello");
+  Object* b= new String("hi");
   Array *d = new Array();
   d->set(0, b);
   assert(d->remove(0) == b);
@@ -55,10 +62,8 @@ void arrayRemoveTest(){
 
 
 void clearAndEmptyTest(){
-  Element* a;
-  Element* b;
-  a->s = new String("hello");
-  b->s = new String("hi");
+  Object* a = new String("hello");
+  Object* b = new String("hi");
   Array *d = new Array();
   d->set(0, b);
   d->set(1, a);
@@ -69,12 +74,9 @@ void clearAndEmptyTest(){
 };
 
 void arrayEqualsAndHashTest(){
-    Element* a;
-    Element* b;
-    Element* c;
-    a->s = new String("hello");
-    b->s = new String("hi");
-    b->s = new String("hi");
+    Object* a = new String("hello");
+    Object* b = new String("hi");
+    Object* c = new String("hi");
     Array *d = new Array();
     Array *e = new Array();
     Array *f = new Array();
